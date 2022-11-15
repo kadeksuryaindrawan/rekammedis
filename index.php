@@ -23,20 +23,20 @@
             <h1 class="auth-title">Login</h1>
             
 
-            <form action="index.html">
+            <form action="./process/login.process.php" method="POST">
                 <div class="form-group position-relative has-icon-left mb-4">
-                    <input type="text" class="form-control form-control-xl" placeholder="Username">
+                    <input type="email" class="form-control form-control-xl" placeholder="Email" name="email">
                     <div class="form-control-icon">
                         <i class="bi bi-person"></i>
                     </div>
                 </div>
                 <div class="form-group position-relative has-icon-left mb-4">
-                    <input type="password" class="form-control form-control-xl" placeholder="Password">
+                    <input type="password" class="form-control form-control-xl" placeholder="Password" name="password">
                     <div class="form-control-icon">
                         <i class="bi bi-shield-lock"></i>
                     </div>
                 </div>
-                <button class="btn btn-primary btn-block btn-lg shadow-lg mt-3">Log in</button>
+                <button class="btn btn-primary btn-block btn-lg shadow-lg mt-3" type="submit" name="login">Log in</button>
             </form>
         </div>
     </div>
