@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once "../../config/connection.php";
-    if(!isset($_SESSION['user_login']['id_admin'])){
+    if(!isset($_SESSION['user_login']['id_dokter'])){
         header('location: ../../index.php');
     }
 ?>
@@ -50,18 +50,11 @@
     <div class="sidebar-menu">
         <ul class="menu list-unstyled">
             <li class="sidebar-title">Menu</li>
-            
+
                         <li <?php if($page == "dashboard") echo "class='sidebar-item active'";?>>
                             <a href="./dashboard.php" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
-                            </a>
-                        </li>
-
-                        <li <?php if($page == "dokter") echo "class='sidebar-item active'";?>>
-                            <a href="./dokter.php" class='sidebar-link'>
-                                <i class="bi bi-person-fill"></i>
-                                <span>Dokter</span>
                             </a>
                         </li>
 

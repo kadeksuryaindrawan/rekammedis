@@ -13,18 +13,39 @@
 					$data_user = mysqli_fetch_assoc($query_check);
 					$encrypted_password = $data_user['password'];
 
-					if(password_verify($password,$encrypted_password)){
-
+					// if(password_verify($password,$encrypted_password)){
+                    if($password == $data_user['password']){
+                        $level = $data_user['level'];
+                        if($level == 'admin'){
 							$_SESSION['user_login']['email'] = $data_user['email'];
-							$_SESSION['user_login']['user_id'] = $data_user['user_id'];
+							$_SESSION['user_login']['id_admin'] = $data_user['id_user'];
                             $_SESSION['user_login']['level'] = $data_user['level'];
 
 							echo"
 									<script>
 										alert('Login Sukses');
-										location.href = '../app/dashboard.php';
+										location.href = '../app/admin/dashboard.php';
 									</script>
 								";
+						}
+
+                        else if($level == 'dokter'){
+							$_SESSION['user_login']['email'] = $data_user['email'];
+							$_SESSION['user_login']['id_dokter'] = $data_user['id_user'];
+                            $_SESSION['user_login']['level'] = $data_user['level'];
+
+							echo"
+									<script>
+										alert('Login Sukses');
+										location.href = '../app/dokter/dashboard.php';
+									</script>
+								";
+						}
+                        else{
+							$pesan = "Gagal login!";
+						}
+
+							
 					}
 					else{
 						$pesan = "Email / Password Salah!";
