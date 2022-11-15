@@ -12,7 +12,7 @@
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="./dashboard.php">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Dokter</li>
                     </ol>
                 </nav>
@@ -33,33 +33,18 @@
                         <div class="card-body">
                             <?php
                             $id = $_GET['id'];
-                            $data = mysqli_query($connection,"SELECT * FROM tbdokter WHERE id_dokter='$id'");
+                            $data = mysqli_query($connection,"SELECT tbdokter.*,tbusers.* FROM tbdokter INNER JOIN tbusers USING(id_user) WHERE id_user='$id'");
                             while($d = mysqli_fetch_array($data)){
                             ?>
                             <form action="../../process/dokter/edit_dokter.php" method="POST" class="form form-vertical">
+                                    <input type="hidden" name="id_user" value="<?= $id ?>">
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="email-id-vertical">Id Dokter</label>
-                                                <input type="hidden" id="email-id-vertical" class="form-control"
-                                                    name="id_dokter" value="<?php echo $d['id_dokter']; ?>">
-                                                <input type="text" name="id_dokter" class="form-control" value="<?php echo $d['id_dokter']; ?>" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="first-name-vertical">Id User</label>
-                                                <select class="form-control" id="exampleFormControlSelect2" name="id_user">
-                                                    <option value="<?php echo $d['id_user']; ?>" placeholder="id_user" disabled selected>
-                                                    <?php echo $d['id_user']; ?>
-                                                    <?php
-                                                    $q = mysqli_query($connection, "SELECT * FROM tbusers") or die(mysql_error($connection));
-                                                    while ($edit = mysqli_fetch_array($q)){
-                                                    echo '<option value="'.$edit['id_user'].'">'.$edit['id_user'].'</option>';
-                                                    } ?>
-                                                    </option>
-                                                </select>
+                                                <label for="email-id-vertical">Email Dokter</label>
+                                                <input type="email" id="email-id-vertical" class="form-control"
+                                                    name="email" placeholder="Email Dokter" value="<?= $d['email'] ?>">
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -78,9 +63,8 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="password-vertical">Alamat</label>
-                                                <input type="text" id="password-vertical" class="form-control"
-                                                    name="alamat" value="<?php echo $d['alamat']; ?>">
+                                                <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alamat"><?= $d['alamat'] ?></textarea>
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-center">
