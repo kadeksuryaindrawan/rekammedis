@@ -1,6 +1,6 @@
 <?php
     $page = 'dashboard';
-    include "./layout/header.php";
+    include "../layout/header-dokter.php";
 ?>
             
 <div class="page-heading">
@@ -270,5 +270,5 @@
 
             
 <?php
-    include "./layout/footer.php";
+    include "../layout/footer.php";
 ?>

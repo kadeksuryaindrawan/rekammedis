@@ -20,7 +20,7 @@
             <div class="auth-logo">
                 <a href="index.php">Logo</a>
             </div>
-            <h1 class="auth-title">Masuk</h1>
+            <h1 class="auth-title">Login</h1>
             
 
             <form action="./process/login.process.php" method="POST">
