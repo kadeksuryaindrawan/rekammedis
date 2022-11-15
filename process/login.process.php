@@ -13,8 +13,8 @@
 					$data_user = mysqli_fetch_assoc($query_check);
 					$encrypted_password = $data_user['password'];
 
-					// if(password_verify($password,$encrypted_password)){
-                    if($password == $data_user['password']){
+					if(password_verify($password,$encrypted_password)){
+                    
                         $level = $data_user['level'];
                         if($level == 'admin'){
 							$_SESSION['user_login']['email'] = $data_user['email'];

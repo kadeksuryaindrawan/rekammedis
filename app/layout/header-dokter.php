@@ -49,7 +49,7 @@
     </div>
     <div class="sidebar-menu">
         <ul class="menu list-unstyled">
-            <li class="sidebar-title">Menu</li>
+            <li class="sidebar-title"><?= $_SESSION['user_login']['email'] ?></li>
 
                         <li <?php if($page == "dashboard") echo "class='sidebar-item active'";?>>
                             <a href="./dashboard.php" class='sidebar-link'>

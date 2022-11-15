@@ -1,5 +1,5 @@
 <?php
-    $page = 'dokter';
+    $page = 'rekammedis';
     include "../layout/header.php";
 ?>
             
@@ -7,7 +7,7 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Dokter</h3>
+                <h3>Rekam Medis Pasien</h3>
                 <div class="my-3">
                     <a href="./tambahdokter.php">
                         <button class="btn btn-primary">Tambah Dokter</button>
