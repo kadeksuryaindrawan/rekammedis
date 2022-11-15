@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2022 at 03:25 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Waktu pembuatan: 15 Nov 2022 pada 16.28
+-- Versi server: 10.4.17-MariaDB-log
+-- Versi PHP: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbdokter`
+-- Struktur dari tabel `tbdokter`
 --
 
 CREATE TABLE `tbdokter` (
@@ -35,10 +35,19 @@ CREATE TABLE `tbdokter` (
   `alamat` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `tbdokter`
+--
+
+INSERT INTO `tbdokter` (`id_dokter`, `id_user`, `nama`, `telp`, `alamat`) VALUES
+(1, 2, 'Made Effendi', '0897621234', 'Dalung'),
+(4, 3, 'Maman Hendrawan', '5645362456', 'Jawa Barat'),
+(9, 4, 'Yayan Suryawan', '1234567', 'Ungasan');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbktp`
+-- Struktur dari tabel `tbktp`
 --
 
 CREATE TABLE `tbktp` (
@@ -60,7 +69,7 @@ CREATE TABLE `tbktp` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbrekammedis`
+-- Struktur dari tabel `tbrekammedis`
 --
 
 CREATE TABLE `tbrekammedis` (
@@ -76,7 +85,7 @@ CREATE TABLE `tbrekammedis` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbusers`
+-- Struktur dari tabel `tbusers`
 --
 
 CREATE TABLE `tbusers` (
@@ -87,69 +96,79 @@ CREATE TABLE `tbusers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data untuk tabel `tbusers`
+--
+
+INSERT INTO `tbusers` (`id_user`, `email`, `password`, `level`) VALUES
+(1, 'admin@google.com', 'admin', 'admin'),
+(2, 'efendi@gmail.com', 'efendi', 'dokter'),
+(3, 'maman@yahoo.com', 'mamanracing', 'dokter'),
+(4, 'yayan@gmail.com', 'yayan123', 'dokter');
+
+--
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbdokter`
+-- Indeks untuk tabel `tbdokter`
 --
 ALTER TABLE `tbdokter`
   ADD PRIMARY KEY (`id_dokter`),
   ADD KEY `fk_user` (`id_user`);
 
 --
--- Indexes for table `tbktp`
+-- Indeks untuk tabel `tbktp`
 --
 ALTER TABLE `tbktp`
   ADD PRIMARY KEY (`nik`);
 
 --
--- Indexes for table `tbrekammedis`
+-- Indeks untuk tabel `tbrekammedis`
 --
 ALTER TABLE `tbrekammedis`
   ADD PRIMARY KEY (`id_rekammedis`),
   ADD KEY `fk_ktp` (`nik`);
 
 --
--- Indexes for table `tbusers`
+-- Indeks untuk tabel `tbusers`
 --
 ALTER TABLE `tbusers`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tbdokter`
+-- AUTO_INCREMENT untuk tabel `tbdokter`
 --
 ALTER TABLE `tbdokter`
-  MODIFY `id_dokter` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dokter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `tbrekammedis`
+-- AUTO_INCREMENT untuk tabel `tbrekammedis`
 --
 ALTER TABLE `tbrekammedis`
   MODIFY `id_rekammedis` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tbusers`
+-- AUTO_INCREMENT untuk tabel `tbusers`
 --
 ALTER TABLE `tbusers`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `tbdokter`
+-- Ketidakleluasaan untuk tabel `tbdokter`
 --
 ALTER TABLE `tbdokter`
   ADD CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `tbusers` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbrekammedis`
+-- Ketidakleluasaan untuk tabel `tbrekammedis`
 --
 ALTER TABLE `tbrekammedis`
   ADD CONSTRAINT `fk_ktp` FOREIGN KEY (`nik`) REFERENCES `tbktp` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;

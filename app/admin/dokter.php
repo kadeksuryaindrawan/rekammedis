@@ -36,24 +36,36 @@
                 <table class="table" id="table1">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>City</th>
-                            <th>Status</th>
+                            <th>No</th>
+                            <th>Id Dokter</th>
+                            <th>Id User</th>
+                            <th>Nama Dokter</th>
+                            <th>No Telephone</th>
+                            <th>Alamat</th>
+                            <th>Opsi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Graiden</td>
-                            <td>vehicula.aliquet@semconsequat.co.uk</td>
-                            <td>076 4820 8838</td>
-                            <td>Offenburg</td>
-                            <td>
-                                <span class="badge bg-success">Active</span>
-                            </td>
-                        </tr>
-                        
+                    <?php
+                        $no = 1;
+                        $data = mysqli_query($connection,"SELECT * FROM tbdokter");
+                        while($d = mysqli_fetch_array($data)){
+                        ?>
+                            <tr>
+                                <td><?php echo $no++; ?></td>
+                                <td><?php echo $d['id_dokter']; ?></td>
+                                <td><?php echo $d['id_user']; ?></td>
+                                <td><?php echo $d['nama']; ?></td>
+                                <td><?php echo $d['telp']; ?></td>
+                                <td><?php echo $d['alamat']; ?></td>
+                                <td>
+                                    <a href="editdokter.php?id=<?php echo $d['id_dokter']; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="../../process/dokter/hapus_dokter.php?id=<?php echo $d['id_dokter']; ?>" class="btn btn-danger">Hapus</a>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                    ?>  
                     </tbody>
                 </table>
             </div>
