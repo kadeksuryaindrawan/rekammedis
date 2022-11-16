@@ -6,73 +6,56 @@
             <div class="page-heading">
     <div class="page-title">
         <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
+            <div class="col-12 col-md-12 order-md-1 order-last">
                 <h3>Rekam Medis Pasien</h3>
-                <div class="my-3">
-                    <a href="./tambahdokter.php">
-                        <button class="btn btn-primary">Tambah Dokter</button>
-                    </a>
+                <div class="my-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="nik" class="label mb-3">Cari Data Penduduk Dengan NIK</label>
+                            <input type="number" id="nik" class="form-control" name="nik" placeholder="Masukkan NIK">
+                        </div>
+                    </div>
                 </div>
                 
             </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
+            <!-- <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="./dashboard.php">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Dokter</li>
                     </ol>
                 </nav>
-            </div>
+            </div> -->
         </div>
     </div>
 
     <!-- Basic Tables start -->
-    <section class="section">
-        <div class="card">
-            <div class="card-header">
-                Daftar Dokter
-            </div>
-            <div class="card-body">
-                <table class="table" id="table1">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Email</th>
-                            <th>Nama Dokter</th>
-                            <th>No Telephone</th>
-                            <th>Alamat</th>
-                            <th>Opsi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                        $no = 1;
-                        $data = mysqli_query($connection,"SELECT tbdokter.*,tbusers.* FROM tbdokter INNER JOIN tbusers USING(id_user) ORDER BY id_dokter");
-                        while($d = mysqli_fetch_array($data)){
-                        ?>
-                            <tr>
-                                <td><?php echo $no++; ?></td>
-                                <td><?php echo $d['email']; ?></td>
-                                <td><?php echo $d['nama']; ?></td>
-                                <td><?php echo $d['telp']; ?></td>
-                                <td><?php echo $d['alamat']; ?></td>
-                                <td>
-                                    <a href="editdokter.php?id=<?php echo $d['id_user']; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="../../process/dokter/hapus_dokter.php?id=<?php echo $d['id_user']; ?>" class="btn btn-danger">Hapus</a>
-                                    <a href="ubahpassword.php?id=<?php echo $d['id_user']; ?>" class="btn btn-warning">Ubah Password</a>
-                                </td>
-                            </tr>
-                            <?php
-                        }
-                    ?>  
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    <section class="section" id="dataPenduduk">
+    
 
     </section>
     <!-- Basic Tables end -->
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('#nik').change(function(event){
+            var nik = $('#nik').val();
+            $('#dataPenduduk').empty();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'POST',
+                url: "datapenduduk.php",
+                data: 'nik='+nik,
+                success: function(data){
+                    $('#dataPenduduk').append(data);
+                }
+            });
+        });
+    });
+</script>
 
             
 <?php
