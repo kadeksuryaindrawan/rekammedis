@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2022 at 06:01 PM
+-- Generation Time: Nov 16, 2022 at 01:15 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -40,7 +40,8 @@ CREATE TABLE `tbdokter` (
 --
 
 INSERT INTO `tbdokter` (`id_dokter`, `id_user`, `nama`, `telp`, `alamat`) VALUES
-(3, 4, 'Dokter', '081999282738', 'Kuta Selatan');
+(3, 4, 'Dokter', '081999282738', 'Kuta Selatan'),
+(6, 7, 'Dokter 2', '081328212', 'Denpasar');
 
 -- --------------------------------------------------------
 
@@ -64,6 +65,14 @@ CREATE TABLE `tbktp` (
   `kewarganegaraan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbktp`
+--
+
+INSERT INTO `tbktp` (`nik`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenis_kelamin`, `gol_darah`, `alamat`, `kelurahan`, `kecamatan`, `agama`, `status_kawin`, `pekerjaan`, `kewarganegaraan`) VALUES
+('2015354007', 'I Kadek Surya Indrawan', 'Denpasar', '2001-11-29', 'Laki-laki', 'O', 'Denpasar', 'Pemogan', 'Denpasar Selatan', 'Hindu', 'Belum Kawin', 'Karyawan Swasta', 'Indonesia'),
+('2015354008', 'Made Mara', 'Badung', '2013-11-07', 'Perempuan', 'AB', 'Badung', 'Panjer', 'Denpasar Selatan', 'Hindu', 'Kawin', 'Mahasiswa', 'Indonesia');
+
 -- --------------------------------------------------------
 
 --
@@ -79,6 +88,15 @@ CREATE TABLE `tbrekammedis` (
   `lainnya` text NOT NULL,
   `tgl_periksa` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbrekammedis`
+--
+
+INSERT INTO `tbrekammedis` (`id_rekammedis`, `nik`, `sakit`, `pemeriksaan`, `pengobatan`, `lainnya`, `tgl_periksa`) VALUES
+(1, '2015354007', 'Batuk Berdahak', 'Pemeriksaan tenggorokan, suhu badan', 'Diberi sirup ABC Diminum 2 kali sehari biar jos', '-', '2022-11-16 06:42:56'),
+(10, '2015354007', 'Demam', 'Suhu tubuh dan tenggorokan', 'Diberi Paracetamol', 'pemeriksaan mata kaki', '2022-11-16 14:44:40'),
+(11, '2015354008', 'Sakit mata', 'bola mata', 'obat tetes mata', '-', '2022-11-16 15:43:36');
 
 -- --------------------------------------------------------
 
@@ -99,7 +117,8 @@ CREATE TABLE `tbusers` (
 
 INSERT INTO `tbusers` (`id_user`, `email`, `password`, `level`) VALUES
 (4, 'dokter@gmail.com', '$2y$12$HG1V6SFUS/H2cfQ7xQSllONUfAMC55e754zO11OtiLOxUdxJ58tjC', 'dokter'),
-(5, 'admin@gmail.com', '$2y$12$UBnwKCnPdgDHnHyII38BFOs19txsZUUVxyk4cp8M6FHpby3Ri1DjC', 'admin');
+(5, 'admin@gmail.com', '$2y$12$UBnwKCnPdgDHnHyII38BFOs19txsZUUVxyk4cp8M6FHpby3Ri1DjC', 'admin'),
+(7, 'dokter2@gmail.com', '$2y$12$AVPj46DQ8ub0h2bSaBripeEhKsHJiNBlMxFa8VHhT8TnGjYvCC4Su', 'dokter');
 
 --
 -- Indexes for dumped tables
@@ -139,19 +158,19 @@ ALTER TABLE `tbusers`
 -- AUTO_INCREMENT for table `tbdokter`
 --
 ALTER TABLE `tbdokter`
-  MODIFY `id_dokter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_dokter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbrekammedis`
 --
 ALTER TABLE `tbrekammedis`
-  MODIFY `id_rekammedis` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_rekammedis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbusers`
 --
 ALTER TABLE `tbusers`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
