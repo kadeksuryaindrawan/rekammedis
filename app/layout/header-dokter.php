@@ -59,6 +59,20 @@
                             </a>
                         </li>
 
+                        <li <?php if($page == "rekammedis") echo "class='sidebar-item active'";?>>
+                            <a href="./rekammedis.php" class='sidebar-link'>
+                                <i class="bi bi-file-earmark-medical-fill"></i>
+                                <span>Rekam Medis</span>
+                            </a>
+                        </li>
+
+                        <li <?php if($page == "laporan") echo "class='sidebar-item active'";?>>
+                            <a href="./laporan.php" class='sidebar-link'>
+                                <i class="bi bi-file-earmark-fill"></i>
+                                <span>Laporan</span>
+                            </a>
+                        </li>
+
         </ul>
     </div>
 </div>
