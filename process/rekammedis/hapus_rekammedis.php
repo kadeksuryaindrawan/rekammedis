@@ -1,5 +1,7 @@
 <?php
     require_once "../../config/connection.php";
+
+    $level = $_SESSION['user_login']['level'];
     $id_rekammedis = $_GET['id_rekammedis'];
     
     $query_rekam = mysqli_query($connection,"SELECT * FROM tbrekammedis WHERE id_rekammedis = $id_rekammedis");
@@ -10,13 +12,30 @@
 
     $query = mysqli_query($connection, $sql1);
     if($query){
-        header("location:../../app/admin/lihatrekam.php?nik=$nik");
+        if($level == 'admin'){
+            header("location:../../app/admin/lihatrekam.php?nik=$nik");
+        }
+        else{  
+            header("location:../../app/dokter/lihatrekam.php?nik=$nik");
+        }
+        
     }else{
-        echo "
+        if($level == 'admin'){
+            echo "
 				<script>
 					alert('Gagal Hapus Data');
 					location.href = '../../app/admin/lihatrekam.php?nik=".$nik."'
 				</script>
 			";
+        }
+        else{
+            echo "
+				<script>
+					alert('Gagal Hapus Data');
+					location.href = '../../app/dokter/lihatrekam.php?nik=".$nik."'
+				</script>
+			";
+        }
+        
     }
 ?>
