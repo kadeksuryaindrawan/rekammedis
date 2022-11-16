@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="../../assets/css/pages/fontawesome.css">
 <link rel="stylesheet" href="../../assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" href="../../assets/css/pages/datatables.css">
+<script type="text/javascript" src="../../assets/js/jquery-3.6.0.min.js"></script>
 
 </head>
 
