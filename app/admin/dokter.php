@@ -41,7 +41,7 @@
                             <th>Nama Dokter</th>
                             <th>No Telephone</th>
                             <th>Alamat</th>
-                            <th>Opsi</th>
+                            <th class="text-center">Opsi</th>
                         </tr>
                     </thead>
                     <tbody>

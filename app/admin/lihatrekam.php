@@ -86,8 +86,8 @@
                                                 else{
                                                     ?>
                                                     <tr>
-                                                                <td class="text-danger text-center" colspan="9">Belum ada rekam medis !</td>
-                                                            </tr>
+                                                        <td class="text-danger text-center" colspan="9">Belum ada rekam medis !</td>
+                                                    </tr>
                                                     <?php
                                                 }
                                             ?>
