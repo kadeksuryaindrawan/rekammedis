@@ -9,20 +9,17 @@
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Laporan Rekam Medis</h3>
             <form action="laporan.php" method="get">
-                <div class="row g-3 align-items-center" style="display:flex;">
-                    <div class="col-auto">
+                <div class="row g-3 align-items-center mb-5 mt-2">
+                    <div class="col-12">
                         <label class="col-form-label">Periode</label>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-4">
                         <input type="datetime-local" class="form-control" name="dari" required>
                     </div>
-                    <div class="col-auto">
-                        -
-                    </div>
-                    <div class="col-auto">
+                    <div class="col-4">
                         <input type="datetime-local" class="form-control" name="ke" required>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-4">
                         <button class="btn btn-primary" type="submit">Cari</button>
                     </div>
                 </div>
