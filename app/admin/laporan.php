@@ -14,13 +14,13 @@
                         <label class="col-form-label">Periode</label>
                     </div>
                     <div class="col-auto">
-                        <input type="date" class="form-control" name="dari" required>
+                        <input type="datetime-local" class="form-control" name="dari" required>
                     </div>
                     <div class="col-auto">
                         -
                     </div>
                     <div class="col-auto">
-                        <input type="date" class="form-control" name="ke" required>
+                        <input type="datetime-local" class="form-control" name="ke" required>
                     </div>
                     <div class="col-auto">
                         <button class="btn btn-primary" type="submit">Cari</button>
