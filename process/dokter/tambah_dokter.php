@@ -3,7 +3,7 @@
     
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $nama = $_POST['nama'];
+    $nama_dokter = $_POST['nama_dokter'];
     $telp = $_POST['telp'];
     $alamat = $_POST['alamat'];
 

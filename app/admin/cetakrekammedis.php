@@ -34,24 +34,24 @@ $pdf->Image("../../public/template/kopa4.jpg",27,0,0,350);
 $pdf->SetFont('Arial','B',16);
 $pdf->Cell(0,-20,"Riwayat Rekam Medis ".$data['nama']."",0,0,'C');
 $pdf->Ln(10,0);
-$pdf->Cell(0,-20,"NIK : ".$nik."",0,0,'C');
+$pdf->Cell(0,-20,"$nik",0,0,'C');
 $pdf->Ln(0,0);
 
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(45,10,'SAKIT',1);
+$pdf->Cell(45,10,'TGL PERIKSA',1);
 $pdf->Cell(70,10,'PEMERIKSAAN',1);
 $pdf->Cell(70,10,'PENGOBATAN',1);
 $pdf->Cell(60,10,'LAINNYA',1);
-$pdf->Cell(35,10,'TGL PERIKSA',1);
+$pdf->Cell(35,10,'DIAGNOSA',1);
 $pdf->Ln();
 
 while($d = mysqli_fetch_assoc($query)){
     $pdf->SetFont('Arial','',8);
-    $pdf->Cell(45,10,$d['sakit'],1);
+    $pdf->Cell(45,10,$d['tgl_periksa'],1);
     $pdf->Cell(70,10,$d['pemeriksaan'],1);
     $pdf->Cell(70,10,$d['pengobatan'],1);
     $pdf->Cell(60,10,$d['lainnya'],1);
-    $pdf->Cell(35,10,$d['tgl_periksa'],1);
+    $pdf->Cell(35,10,$d['sakit'],1);
     $pdf->Ln();
 }
 

@@ -2,10 +2,12 @@
     require_once "../../config/connection.php";
     
     extract($_POST);
+var_dump(extract($_POST));  
 
+session_start();
     $level = $_SESSION['user_login']['level'];
 
-    $query_insert = mysqli_query($connection, "INSERT INTO tbrekammedis VALUES (NULL, '$nik', '$sakit', '$pemeriksaan','$pengobatan','$lainnya', now())");
+    $query_insert = mysqli_query($connection, "INSERT INTO tbrekammedis VALUES (NULL, '$id_dokter', '$nik', '$sakit', '$jenis_penyakit', '$pemeriksaan','$alergi_obat','$pengobatan','$lainnya', now())");
     if($query_insert){
         if($level == 'admin'){
             header("location:../../app/admin/lihatrekam.php?nik=$nik");

@@ -56,7 +56,7 @@
                                 <th>SAKIT</th>
                                 <th>PEMERIKSAAN</th>
                                 <th>PENGOBATAN</th>
-                                <th>LAINNYA</th>
+                                <th>JENIS PENYAKIT</th>
                                 <th>TGL PERIKSA</th>
                             </tr>
                         </thead>
@@ -78,7 +78,7 @@
                                             <td><?= $d['sakit'] ?></td>
                                             <td><?= $d['pemeriksaan'] ?></td>
                                             <td><?= $d['pengobatan'] ?></td>
-                                            <td><?= $d['lainnya'] ?></td>
+                                            <td><?= $d['jenis_penyakit'] ?></td>
                                             <td><?= $d['tgl_periksa'] ?></td>
                                         </tr>
                                     <?php

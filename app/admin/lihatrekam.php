@@ -1,12 +1,12 @@
 <?php
-    $page = 'rekammedis';
-    include "../layout/header.php";
-    $nik = $_GET['nik'];
-    $query = mysqli_query($connection,"SELECT * FROM tbktp WHERE nik = '$nik'");
-    $data = mysqli_fetch_assoc($query);
+$page = 'rekammedis';
+include "../layout/header.php";
+$nik = $_GET['nik'];
+$query = mysqli_query($connection, "SELECT * FROM tbktp WHERE nik = '$nik'");
+$data = mysqli_fetch_assoc($query);
 ?>
-            
-            <div class="page-heading">
+
+<div class="page-heading">
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-12 order-md-1 order-last">
@@ -37,75 +37,75 @@
     <!-- Basic Tables start -->
     <section class="section">
         <div class="row" id="table-bordered">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Daftar Rekam Medis Pasien <?= ucwords($data['nama'])?></h4>
-                            </div>
-                            <div class="card-content">
-                                <!-- table bordered -->
-                                <div class="table-responsive">
-                                    <table class="table table-bordered mb-0">
-                                        <thead>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Daftar Rekam Medis Pasien <?= ucwords($data['nama']) ?></h4>
+                    </div>
+                    <div class="card-content">
+                        <!-- table bordered -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>NIK</th>
+                                        <th>NAMA</th>
+                                        <th>UMUR</th>
+                                        <th>DIAGNOSA</th>
+                                        <th>TINDAKAN</th>
+                                        <th>DOKTER</th>
+                                        <th>OBAT</th>
+                                        <th>TGL PERIKSA</th>
+                                        <th>ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+
+                                    $query = mysqli_query($connection, "SELECT tbrekammedis.*,tbktp.*, timestampdiff(year, tbktp.tgl_lahir, curdate()) as umur FROM tbrekammedis INNER JOIN tbktp USING(nik) WHERE nik = '$nik' ORDER BY tbrekammedis.id_rekammedis DESC");
+                                    $query1 = mysqli_query($connection, "SELECT tbdokter.nama_dokter, tbrekammedis.*, tbktp.*,TIMESTAMPDIFF(YEAR, tbktp.tgl_lahir, CURDATE()) AS umur FROM tbdokter JOIN tbrekammedis ON tbdokter.id_dokter = tbrekammedis.id_dokter JOIN tbktp USING(nik) WHERE nik = '$nik' ORDER BY tbrekammedis.id_rekammedis DESC;");
+                                    if (mysqli_num_rows($query1) > 0) {
+                                        while ($d = mysqli_fetch_assoc($query1)) {
+                                    ?>
                                             <tr>
-                                                <th>NIK</th>
-                                                <th>NAMA</th>
-                                                <th>UMUR</th>
-                                                <th>SAKIT</th>
-                                                <th>PEMERIKSAAN</th>
-                                                <th>PENGOBATAN</th>
-                                                <th>LAINNYA</th>
-                                                <th>TGL PERIKSA</th>
-                                                <th>ACTION</th>
+                                                <td class="text-bold-500"><?= $d['nik'] ?></td>
+                                                <td><?= $d['nama'] ?></td>
+                                                <td class="text-bold-500"><?= $d['umur'] ?></td>
+                                                <td><?= $d['sakit'] ?></td>
+                                                <td><?= $d['pemeriksaan'] ?></td>
+                                                <td><?= $d['nama_dokter'] ?></td>
+                                                <td><?= $d['pengobatan'] ?></td>
+                                                <td><?= $d['tgl_periksa'] ?></td>
+                                                <td>
+                                                    <a href="./editrekammedis.php?id_rekammedis=<?= $d['id_rekammedis'] ?>"><button class="btn btn-primary my-2">Edit</button></a>
+                                                    <a href="../../process/rekammedis/hapus_rekammedis.php?id_rekammedis=<?= $d['id_rekammedis'] ?>"><button class="btn btn-danger my-2">Hapus</button></a>
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                                
-                                                $query = mysqli_query($connection,"SELECT tbrekammedis.*,tbktp.*, timestampdiff(year, tbktp.tgl_lahir, curdate()) as umur FROM tbrekammedis INNER JOIN tbktp USING(nik) WHERE nik = '$nik' ORDER BY tbrekammedis.id_rekammedis DESC");
-                                                if(mysqli_num_rows($query) > 0){
-                                                    while($d = mysqli_fetch_assoc($query)){
-                                                        ?>
-                                                            <tr>
-                                                                <td class="text-bold-500"><?= $d['nik'] ?></td>
-                                                                <td><?= $d['nama'] ?></td>
-                                                                <td class="text-bold-500"><?= $d['umur'] ?></td>
-                                                                <td><?= $d['sakit'] ?></td>
-                                                                <td><?= $d['pemeriksaan'] ?></td>
-                                                                <td><?= $d['pengobatan'] ?></td>
-                                                                <td><?= $d['lainnya'] ?></td>
-                                                                <td><?= $d['tgl_periksa'] ?></td>
-                                                                <td>
-                                                                    <a href="./editrekammedis.php?id_rekammedis=<?= $d['id_rekammedis'] ?>"><button class="btn btn-primary my-2">Edit</button></a>
-                                                                    <a href="../../process/rekammedis/hapus_rekammedis.php?id_rekammedis=<?=$d['id_rekammedis'] ?>"><button class="btn btn-danger my-2">Hapus</button></a>
-                                                                </td>
-                                                            </tr>
-                                                        <?php
-                                                    }
-                                                }
-                                                else{
-                                                    ?>
-                                                    <tr>
-                                                        <td class="text-danger text-center" colspan="9">Belum ada rekam medis !</td>
-                                                    </tr>
-                                                    <?php
-                                                }
-                                            ?>
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                                        <?php
+                                        }
+                                    } else {
+                                        ?>
+                                        <tr>
+                                            <td class="text-danger text-center" colspan="9">Belum ada rekam medis !</td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
+                                
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
     </section>
     <!-- Basic Tables end -->
 </div>
 
 
-            
+
 <?php
-    include "../layout/footer.php";
+include "../layout/footer.php";
 ?>

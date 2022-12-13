@@ -51,7 +51,7 @@
                                             <div class="form-group">
                                                 <label for="email-id-vertical">Nama Dokter</label>
                                                 <input type="text" id="email-id-vertical" class="form-control"
-                                                    name="nama" value="<?php echo $d['nama']; ?>">
+                                                    name="nama_dokter" value="<?php echo $d['nama_dokter']; ?>">
                                             </div>
                                         </div>
                                         <div class="col-12">
