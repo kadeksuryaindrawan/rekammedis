@@ -52,7 +52,7 @@
                                             <div class="form-group">
                                                 <label for="email-id-vertical">Nama Dokter</label>
                                                 <input type="text" id="email-id-vertical" class="form-control"
-                                                    name="nama" placeholder="Nama Dokter">
+                                                    name="nama_dokter" placeholder="Nama Dokter">
                                             </div>
                                         </div>
                                         <div class="col-12">

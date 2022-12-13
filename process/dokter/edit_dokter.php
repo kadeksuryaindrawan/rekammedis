@@ -2,7 +2,7 @@
     require_once "../../config/connection.php";
     $sql1 = "UPDATE tbdokter
         SET 
-            nama = '".$_POST['nama']."',
+            nama_dokter = '".$_POST['nama_dokter']."',
             telp = '".$_POST['telp']."',
             alamat = '".$_POST['alamat']."'
         WHERE id_user = '".$_POST['id_user']."'";

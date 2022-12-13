@@ -39,7 +39,7 @@
 
 <script>
     $(document).ready(function(){
-        $('#nik').change(function(event){
+        $('#nik').keyup(function(event){
             var nik = $('#nik').val();
             $('#dataPenduduk').empty();
             $.ajax({

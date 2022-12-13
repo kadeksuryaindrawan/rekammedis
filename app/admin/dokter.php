@@ -53,7 +53,7 @@
                             <tr>
                                 <td><?php echo $no++; ?></td>
                                 <td><?php echo $d['email']; ?></td>
-                                <td><?php echo $d['nama']; ?></td>
+                                <td><?php echo $d['nama_dokter']; ?></td>
                                 <td><?php echo $d['telp']; ?></td>
                                 <td><?php echo $d['alamat']; ?></td>
                                 <td>
