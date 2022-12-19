@@ -41,14 +41,13 @@ $data = mysqli_fetch_assoc($query);
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="sakit" class="form-label">Nama Dokter</label>
-                                                <select class="form-control" id="exampleFormControlSelect2" name="id_dokter">
-                                                    <option value="<?php echo $d['nama']; ?>" placeholder="Nama Dokter">
+                                                <select class="form-control" id="sakit" name="id_dokter">
+                                                    <option value="">Pilih Dokter</option>
                                                         <?php
                                                         $q = mysqli_query($connection, "SELECT * FROM tbdokter") or die(mysqli_error($connection));
                                                         while ($edit = mysqli_fetch_array($q)) {
                                                             echo '<option value="' . $edit['id_dokter'] . '">' . $edit['nama_dokter'] . '</option>';
                                                         } ?>
-                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -59,9 +58,14 @@ $data = mysqli_fetch_assoc($query);
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="pemeriksaan" class="form-label">Jenis Penyakit</label>
-                                                <textarea class="form-control" id="jenis_penyakit" rows="3" name="jenis_pemeriksaan"></textarea>
+                                        <div class="form-group">
+                                                <label for="jenis" class="form-label">Jenis Penyakit</label>
+                                                <select class="form-control" id="jenis" name="jenis_penyakit">
+                                                    <option value="">Pilih Jenis Penyakit</option>
+                                                    <option value="Umum">Umum</option>
+                                                    <option value="Khusus">Khusus</option>
+                                                    <option value="Lainnya">Lainnya</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-12">
