@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Des 2022 pada 05.29
--- Versi server: 10.4.17-MariaDB-log
--- Versi PHP: 8.0.0
+-- Generation Time: Dec 20, 2022 at 01:52 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbdokter`
+-- Table structure for table `tbdokter`
 --
 
 CREATE TABLE `tbdokter` (
@@ -36,7 +36,7 @@ CREATE TABLE `tbdokter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbdokter`
+-- Dumping data for table `tbdokter`
 --
 
 INSERT INTO `tbdokter` (`id_dokter`, `id_user`, `nama_dokter`, `telp`, `alamat`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `tbdokter` (`id_dokter`, `id_user`, `nama_dokter`, `telp`, `alamat`)
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbktp`
+-- Table structure for table `tbktp`
 --
 
 CREATE TABLE `tbktp` (
@@ -67,7 +67,7 @@ CREATE TABLE `tbktp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbktp`
+-- Dumping data for table `tbktp`
 --
 
 INSERT INTO `tbktp` (`nik`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenis_kelamin`, `gol_darah`, `alamat`, `kelurahan`, `kecamatan`, `agama`, `status_kawin`, `pekerjaan`, `kewarganegaraan`) VALUES
@@ -77,7 +77,7 @@ INSERT INTO `tbktp` (`nik`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenis_kelamin`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbrekammedis`
+-- Table structure for table `tbrekammedis`
 --
 
 CREATE TABLE `tbrekammedis` (
@@ -85,7 +85,7 @@ CREATE TABLE `tbrekammedis` (
   `id_dokter` int(11) NOT NULL,
   `nik` varchar(20) NOT NULL,
   `sakit` varchar(100) NOT NULL,
-  `jenis_penyakit` varchar(25) NOT NULL,
+  `jenis_penyakit` varchar(100) NOT NULL,
   `pemeriksaan` text NOT NULL,
   `alergi_obat` text NOT NULL,
   `pengobatan` text NOT NULL,
@@ -94,20 +94,21 @@ CREATE TABLE `tbrekammedis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbrekammedis`
+-- Dumping data for table `tbrekammedis`
 --
 
 INSERT INTO `tbrekammedis` (`id_rekammedis`, `id_dokter`, `nik`, `sakit`, `jenis_penyakit`, `pemeriksaan`, `alergi_obat`, `pengobatan`, `lainnya`, `tgl_periksa`) VALUES
 (1, 3, '2015354007', 'Batuk Berdahak', 'Umum', 'Pemeriksaan tenggorokan, suhu badan', 'Paracetamol', 'Diberi sirup ABC Diminum 2 kali sehari biar jos', '-', '2022-11-16 06:42:56'),
-(10, 3, '2015354007', 'Demam', 'Umum', 'Suhu tubuh dan tenggorokan', 'Paracetamol', 'Diberi Paracetamol', 'pemeriksaan mata kaki', '2022-11-16 14:44:40'),
+(10, 3, '2015354007', 'Demam', 'Khusus', 'Suhu tubuh dan tenggorokan', 'Paracetamol', 'Diberi Paracetamol', 'pemeriksaan mata kaki', '2022-11-16 14:44:40'),
 (11, 3, '2015354008', 'Sakit mata', 'Khusus', 'bola mata', 'Paracetamol', 'obat tetes mata', '-', '2022-11-16 15:43:36'),
 (14, 3, '2015354007', 'Flu', 'Umum', 'Pemeriksaan Hidung', 'Paracetamol', 'Antibiotik', '-', '2022-11-18 19:15:24'),
-(20, 7, '2015354007', 'Kaki Gajah', '', 'Cek Tensi', 'Obat Luar', 'Salep', 'Ada', '2022-12-03 11:00:24');
+(21, 7, '2015354007', 'test', 'Lainnya', 'test', 'tidak', 'mantap', 'tidak', '2022-12-20 00:19:44'),
+(22, 3, '2015354007', 'test2', 'Khusus', 'mantap', 'mantap', 'mantap', 'mantap', '2022-12-20 00:24:56');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbusers`
+-- Table structure for table `tbusers`
 --
 
 CREATE TABLE `tbusers` (
@@ -118,7 +119,7 @@ CREATE TABLE `tbusers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbusers`
+-- Dumping data for table `tbusers`
 --
 
 INSERT INTO `tbusers` (`id_user`, `email`, `password`, `level`) VALUES
@@ -132,20 +133,20 @@ INSERT INTO `tbusers` (`id_user`, `email`, `password`, `level`) VALUES
 --
 
 --
--- Indeks untuk tabel `tbdokter`
+-- Indexes for table `tbdokter`
 --
 ALTER TABLE `tbdokter`
   ADD PRIMARY KEY (`id_dokter`),
   ADD KEY `fk_user` (`id_user`);
 
 --
--- Indeks untuk tabel `tbktp`
+-- Indexes for table `tbktp`
 --
 ALTER TABLE `tbktp`
   ADD PRIMARY KEY (`nik`);
 
 --
--- Indeks untuk tabel `tbrekammedis`
+-- Indexes for table `tbrekammedis`
 --
 ALTER TABLE `tbrekammedis`
   ADD PRIMARY KEY (`id_rekammedis`),
@@ -153,45 +154,45 @@ ALTER TABLE `tbrekammedis`
   ADD KEY `id_dokter` (`id_dokter`);
 
 --
--- Indeks untuk tabel `tbusers`
+-- Indexes for table `tbusers`
 --
 ALTER TABLE `tbusers`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tbdokter`
+-- AUTO_INCREMENT for table `tbdokter`
 --
 ALTER TABLE `tbdokter`
   MODIFY `id_dokter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `tbrekammedis`
+-- AUTO_INCREMENT for table `tbrekammedis`
 --
 ALTER TABLE `tbrekammedis`
-  MODIFY `id_rekammedis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_rekammedis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT untuk tabel `tbusers`
+-- AUTO_INCREMENT for table `tbusers`
 --
 ALTER TABLE `tbusers`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `tbdokter`
+-- Constraints for table `tbdokter`
 --
 ALTER TABLE `tbdokter`
   ADD CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `tbusers` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tbrekammedis`
+-- Constraints for table `tbrekammedis`
 --
 ALTER TABLE `tbrekammedis`
   ADD CONSTRAINT `fk_ktp` FOREIGN KEY (`nik`) REFERENCES `tbktp` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE,
