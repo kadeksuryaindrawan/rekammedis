@@ -1,5 +1,5 @@
 ---
 deployment:
 tasks:
-- export DEPLOYPATH=/home/eley9573/public_html/rekammedis
-- /bin/cp -R * $DEPLOYPATH
+- export DEPLOYPATH=/home/usercpanel/public_html/git
+- /bin/cp -r * $DEPLOYPATH
