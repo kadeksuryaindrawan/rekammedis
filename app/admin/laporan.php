@@ -24,6 +24,18 @@
                     </div>
                 </div>
             </form>
+            <?php
+                if(isset($_GET['dari']) && isset($_GET['ke'])){
+                    ?>
+                        <a href="./cetaklaporan.php?dari=<?= $_GET['dari'] ?>&ke=<?= $_GET['ke'] ?>"><button class="btn btn-warning mb-3">Cetak Laporan</button></a>
+                    <?php
+                }else{
+                    ?>
+                        <a href="./cetaklaporan.php"><button class="btn btn-warning mb-3">Cetak Laporan</button></a>
+                    <?php
+                }
+            ?>
+            
                 
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
