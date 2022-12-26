@@ -1,12 +1,12 @@
 <?php
-    $page = 'rekammedis';
-    include "../layout/header-dokter.php";
-    $nik = $_GET['nik'];
-    $query = mysqli_query($connection,"SELECT * FROM tbktp WHERE nik = '$nik'");
-    $data = mysqli_fetch_assoc($query);
+$page = 'rekammedis';
+include "../layout/header-dokter.php";
+$nik = $_GET['nik'];
+$query = mysqli_query($connection, "SELECT * FROM tbktp WHERE nik = '$nik'");
+$data = mysqli_fetch_assoc($query);
 ?>
-            
-            <div class="page-heading">
+
+<div class="page-heading">
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last mb-3">
@@ -35,30 +35,47 @@
                     <div class="card-content">
                         <div class="card-body">
                             <form action="../../process/rekammedis/tambah_rekammedis.php" method="POST" class="form form-vertical">
-                                <input type="hidden" name="nik" value="<?=$nik?>">
+                                <input type="hidden" name="nik" value="<?= $nik ?>">
                                 <div class="form-body">
                                     <div class="row">
-                                    <div class="col-12">
+                                        <div class="col-12">
                                             <div class="form-group">
-                                                <label for="sakit" class="form-label">Sakit</label>
+                                                <label for="sakit" class="form-label">Diagnosa Penyakit</label>
                                                 <textarea class="form-control" id="sakit" rows="3" name="sakit"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
+                                        <div class="form-group">
+                                                <label for="jenis" class="form-label">Jenis Penyakit</label>
+                                                <select class="form-control" id="jenis" name="jenis_penyakit">
+                                                    <option value="">Pilih Jenis Penyakit</option>
+                                                    <option value="Umum">Umum</option>
+                                                    <option value="Khusus">Khusus</option>
+                                                    <option value="Lainnya">Lainnya</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
                                             <div class="form-group">
-                                                <label for="pemeriksaan" class="form-label">Pemeriksaan</label>
+                                                <label for="pemeriksaan" class="form-label">Tindakan</label>
                                                 <textarea class="form-control" id="pemeriksaan" rows="3" name="pemeriksaan"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="pengobatan" class="form-label">Pengobatan</label>
+                                                <label for="pemeriksaan" class="form-label">Alergi Obat</label>
+                                                <textarea class="form-control" id="alergi_obat" rows="3" name="alergi_obat"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="pengobatan" class="form-label">Obat Yang Diberikan</label>
                                                 <textarea class="form-control" id="pengobatan" rows="3" name="pengobatan"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="lainnya" class="form-label">Lainnya</label>
+                                                <label for="lainnya" class="form-label">Keterangan Tambahan</label>
                                                 <textarea class="form-control" id="lainnya" rows="3" name="lainnya"></textarea>
                                             </div>
                                         </div>
@@ -82,7 +99,7 @@
     <!-- // Basic Vertical form layout section end -->
 </div>
 
-            
+
 <?php
-    include "../layout/footer.php";
+include "../layout/footer.php";
 ?>
