@@ -77,7 +77,7 @@
             
             <div class="card">
                 <div class="card-header">
-                    <h4>Jenis Penyakit</h4>
+                    <h4>Jenis Penyakitssss</h4>
                 </div>
                 <div class="card-body">
                     <div id="chart-visitors-profile"></div>
