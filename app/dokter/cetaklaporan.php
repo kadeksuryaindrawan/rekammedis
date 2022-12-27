@@ -13,39 +13,47 @@ if(isset($_GET['dari']) && isset($_GET['ke'])){
     $dari = $_GET['dari'];
     $ke = $_GET['ke'];
     $format = "laporan_".$dari."-".$ke.".pdf";
-    $query = mysqli_query($connection, "SELECT tbrekammedis.*,tbktp.*, timestampdiff(year, tbktp.tgl_lahir, curdate()) as umur FROM tbrekammedis INNER JOIN tbktp USING(nik) WHERE tgl_periksa BETWEEN '".$dari."' and '".$ke."' ORDER BY tbrekammedis.id_rekammedis DESC");
+    $query = mysqli_query($connection, "SELECT tbdokter.nama_dokter, tbrekammedis.*, tbktp.*,TIMESTAMPDIFF(YEAR, tbktp.tgl_lahir, CURDATE()) AS umur FROM tbdokter JOIN tbrekammedis ON tbdokter.id_dokter = tbrekammedis.id_dokter JOIN tbktp USING(nik)  WHERE tgl_periksa BETWEEN '".$_GET['dari']."' and '".$_GET['ke']."' ORDER BY tbrekammedis.id_rekammedis DESC;");
 }
 else{
     $format = "laporan.pdf";
-    $query = mysqli_query($connection, "SELECT tbrekammedis.*,tbktp.*, timestampdiff(year, tbktp.tgl_lahir, curdate()) as umur FROM tbrekammedis INNER JOIN tbktp USING(nik) ORDER BY tbrekammedis.id_rekammedis DESC");
+    $query = mysqli_query($connection, "SELECT tbdokter.nama_dokter, tbrekammedis.*, tbktp.*,TIMESTAMPDIFF(YEAR, tbktp.tgl_lahir, CURDATE()) AS umur FROM tbdokter JOIN tbrekammedis ON tbdokter.id_dokter = tbrekammedis.id_dokter JOIN tbktp USING(nik) ORDER BY tbrekammedis.id_rekammedis DESC;");
 }
 
 $html = '<center><h3>Daftar Laporan</h3></center><hr/><br/>';
 $html .= '<table border="1" width="100%" cellspacing="0" cellpadding="5px">
  <tr>
  <th>NO</th>
+ <th>TGL PERIKSA</th>
+ <th>DOKTER</th>
+ <th>JENIS PENYAKIT</th>
                                 <th>NIK</th>
                                 <th>NAMA</th>
                                 <th>UMUR</th>
-                                <th>SAKIT</th>
-                                <th>PEMERIKSAAN</th>
-                                <th>PENGOBATAN</th>
-                                <th>JENIS PENYAKIT</th>
-                                <th>TGL PERIKSA</th>
+                                <th>DIAGNOSA</th>
+                                <th>TINDAKAN</th>
+                                <th>OBAT</th>
+                                <th>KETERANGAN TAMBAHAN</th>
+                                
+                                
  </tr>';
 $no = 1;
 while($row = mysqli_fetch_array($query))
 {
  $html .= "<tr>
  <td>".$no++."</td>
+ <td>".$row['tgl_periksa']."</td>
+ <td>".$row['nama_dokter']."</td>
+ <td>".$row['jenis_penyakit']."</td>
  <td>".$row['nik']."</td>
  <td>".$row['nama']."</td>
  <td>".$row['umur']."</td>
  <td>".$row['sakit']."</td>
  <td>".$row['pemeriksaan']."</td>
  <td>".$row['pengobatan']."</td>
- <td>".$row['jenis_penyakit']."</td>
- <td>".$row['tgl_periksa']."</td>
+ <td>".$row['lainnya']."</td>
+ 
+ 
  </tr>";
 }
 $dompdf->loadHtml($html);

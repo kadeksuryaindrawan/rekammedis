@@ -48,6 +48,7 @@ $data = mysqli_fetch_assoc($query);
                             <table class="table table-bordered mb-0">
                                 <thead>
                                     <tr>
+                                        <th>TGL PERIKSA</th>
                                         <th>NIK</th>
                                         <th>NAMA</th>
                                         <th>UMUR</th>
@@ -55,7 +56,6 @@ $data = mysqli_fetch_assoc($query);
                                         <th>TINDAKAN</th>
                                         <th>DOKTER</th>
                                         <th>OBAT</th>
-                                        <th>TGL PERIKSA</th>
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
@@ -68,6 +68,7 @@ $data = mysqli_fetch_assoc($query);
                                         while ($d = mysqli_fetch_assoc($query1)) {
                                     ?>
                                             <tr>
+                                            <td><?= $d['tgl_periksa'] ?></td>
                                                 <td class="text-bold-500"><?= $d['nik'] ?></td>
                                                 <td><?= $d['nama'] ?></td>
                                                 <td class="text-bold-500"><?= $d['umur'] ?></td>
@@ -75,7 +76,7 @@ $data = mysqli_fetch_assoc($query);
                                                 <td><?= $d['pemeriksaan'] ?></td>
                                                 <td><?= $d['nama_dokter'] ?></td>
                                                 <td><?= $d['pengobatan'] ?></td>
-                                                <td><?= $d['tgl_periksa'] ?></td>
+                                                
                                                 <td>
                                                     <a href="./editrekammedis.php?id_rekammedis=<?= $d['id_rekammedis'] ?>"><button class="btn btn-primary my-2">Edit</button></a>
                                                     <a href="../../process/rekammedis/hapus_rekammedis.php?id_rekammedis=<?= $d['id_rekammedis'] ?>"><button class="btn btn-danger my-2">Hapus</button></a>
