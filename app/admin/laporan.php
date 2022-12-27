@@ -62,21 +62,24 @@
                         <thead>
                             <tr>
                                 <th>NO</th>
+                                <th>TGL PERIKSA</th>
+                                <th>DOKTER</th>
+                                <th>JENIS PENYAKIT</th>
                                 <th>NIK</th>
                                 <th>NAMA</th>
                                 <th>UMUR</th>
-                                <th>SAKIT</th>
-                                <th>PEMERIKSAAN</th>
-                                <th>PENGOBATAN</th>
-                                <th>JENIS PENYAKIT</th>
-                                <th>TGL PERIKSA</th>
+                                <th>DIAGNOSA</th>
+                                <th>TINDAKAN</th>
+                                <th>OBAT</th>
+                                <th>KETERANGAN TAMBAHAN</th>
+                                
                             </tr>
                         </thead>
                         <?php
                             if(isset($_GET['dari']) && isset($_GET['ke'])){
-                                $data = mysqli_query($connection, "SELECT tbrekammedis.*,tbktp.*, timestampdiff(year, tbktp.tgl_lahir, curdate()) as umur FROM tbrekammedis INNER JOIN tbktp USING(nik) WHERE tgl_periksa BETWEEN '".$_GET['dari']."' and '".$_GET['ke']."' ORDER BY tbrekammedis.id_rekammedis DESC");
+                                $data = mysqli_query($connection, "SELECT tbdokter.nama_dokter, tbrekammedis.*, tbktp.*,TIMESTAMPDIFF(YEAR, tbktp.tgl_lahir, CURDATE()) AS umur FROM tbdokter JOIN tbrekammedis ON tbdokter.id_dokter = tbrekammedis.id_dokter JOIN tbktp USING(nik)  WHERE tgl_periksa BETWEEN '".$_GET['dari']."' and '".$_GET['ke']."' ORDER BY tbrekammedis.id_rekammedis DESC;");
                             }else{
-                                $data = mysqli_query($connection, "SELECT tbrekammedis.*,tbktp.*, timestampdiff(year, tbktp.tgl_lahir, curdate()) as umur FROM tbrekammedis INNER JOIN tbktp USING(nik) ORDER BY tbrekammedis.id_rekammedis DESC");
+                                $data = mysqli_query($connection, "SELECT tbdokter.nama_dokter, tbrekammedis.*, tbktp.*,TIMESTAMPDIFF(YEAR, tbktp.tgl_lahir, CURDATE()) AS umur FROM tbdokter JOIN tbrekammedis ON tbdokter.id_dokter = tbrekammedis.id_dokter JOIN tbktp USING(nik) ORDER BY tbrekammedis.id_rekammedis DESC;");
                             }
                             $no = 1;
                             if(mysqli_num_rows($data) > 0){
@@ -84,14 +87,17 @@
                                     ?>
                                         <tr>
                                             <td><?= $no++?></td>
+                                            <td><?= $d['tgl_periksa'] ?></td>
+                                            <td><?= $d['nama_dokter'] ?></td>
+                                            <td><?= $d['jenis_penyakit'] ?></td>
                                             <td class="text-bold-500"><?= $d['nik'] ?></td>
                                             <td><?= $d['nama'] ?></td>
                                             <td class="text-bold-500"><?= $d['umur'] ?></td>
                                             <td><?= $d['sakit'] ?></td>
                                             <td><?= $d['pemeriksaan'] ?></td>
                                             <td><?= $d['pengobatan'] ?></td>
-                                            <td><?= $d['jenis_penyakit'] ?></td>
-                                            <td><?= $d['tgl_periksa'] ?></td>
+                                            <td><?= $d['lainnya'] ?></td>
+                                            
                                         </tr>
                                     <?php
                                 }
