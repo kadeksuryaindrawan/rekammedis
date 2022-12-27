@@ -49,13 +49,14 @@ $data = mysqli_fetch_assoc($query);
                                 <thead>
                                     <tr>
                                         <th>TGL PERIKSA</th>
+                                        <th>DOKTER</th>
                                         <th>NIK</th>
                                         <th>NAMA</th>
                                         <th>UMUR</th>
                                         <th>DIAGNOSA</th>
                                         <th>TINDAKAN</th>
-                                        <th>DOKTER</th>
                                         <th>OBAT</th>
+                                        <th>KETERANGAN TAMBAHAN</th>
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
@@ -69,14 +70,15 @@ $data = mysqli_fetch_assoc($query);
                                     ?>
                                             <tr>
                                             <td><?= $d['tgl_periksa'] ?></td>
+                                            <td><?= $d['nama_dokter'] ?></td>
                                                 <td class="text-bold-500"><?= $d['nik'] ?></td>
                                                 <td><?= $d['nama'] ?></td>
                                                 <td class="text-bold-500"><?= $d['umur'] ?></td>
                                                 <td><?= $d['sakit'] ?></td>
                                                 <td><?= $d['pemeriksaan'] ?></td>
-                                                <td><?= $d['nama_dokter'] ?></td>
-                                                <td><?= $d['pengobatan'] ?></td>
                                                 
+                                                <td><?= $d['pengobatan'] ?></td>
+                                                <td><?= $d['lainnya'] ?></td>
                                                 <td>
                                                     <a href="./editrekammedis.php?id_rekammedis=<?= $d['id_rekammedis'] ?>"><button class="btn btn-primary my-2">Edit</button></a>
                                                     <a href="../../process/rekammedis/hapus_rekammedis.php?id_rekammedis=<?= $d['id_rekammedis'] ?>"><button class="btn btn-danger my-2">Hapus</button></a>
