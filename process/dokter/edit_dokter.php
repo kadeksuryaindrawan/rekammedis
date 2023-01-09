@@ -32,12 +32,12 @@ session_start();
         }
     }else if($level == 'dokter'){
         if($query && $query2){
-            header("location:../../app/dokter/profile.php");
+            header("location:../../app/dokter/lihatdata.php");
         }else{
             echo "
                     <script>
                         alert('Gagal Edit Data');
-                        location.href = '../../app/dokter/profile.php'
+                        location.href = '../../app/dokter/lihatdata.php'
                     </script>
                 ";
         }

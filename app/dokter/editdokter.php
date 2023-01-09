@@ -78,7 +78,7 @@
                             ?>
                             
                             <div class="row">
-                                <a href="./profile.php" class="d-flex justify-content-center w-full">
+                                <a href="./lihatdata.php" class="d-flex justify-content-center w-full">
                                     <button class="btn btn-secondary w-100 my-1">Kembali</button>
                                 </a>
                             </div>
