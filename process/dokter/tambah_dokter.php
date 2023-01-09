@@ -1,6 +1,5 @@
 <?php
     require_once "../../config/connection.php";
-    
     $email = $_POST['email'];
     $password = $_POST['password'];
     $nama_dokter = $_POST['nama_dokter'];

@@ -1,5 +1,9 @@
 <?php
+session_start();
     require_once "../../config/connection.php";
+
+    $level = $_SESSION['user_login']['level'];
+
     $sql1 = "UPDATE tbdokter
         SET 
             nama_dokter = '".$_POST['nama_dokter']."',
@@ -14,14 +18,28 @@
 
     $query = mysqli_query($connection, $sql1);
     $query2 = mysqli_query($connection, $sql2);
-    if($query && $query2){
-        header("location:../../app/admin/dokter.php");
-    }else{
-        echo "
-				<script>
-					alert('Gagal Edit Data');
-					location.href = '../../app/admin/dokter.php'
-				</script>
-			";
+
+    if($level == 'admin'){
+        if($query && $query2){
+            header("location:../../app/admin/dokter.php");
+        }else{
+            echo "
+                    <script>
+                        alert('Gagal Edit Data');
+                        location.href = '../../app/admin/dokter.php'
+                    </script>
+                ";
+        }
+    }else if($level == 'dokter'){
+        if($query && $query2){
+            header("location:../../app/dokter/profile.php");
+        }else{
+            echo "
+                    <script>
+                        alert('Gagal Edit Data');
+                        location.href = '../../app/dokter/profile.php'
+                    </script>
+                ";
+        }
     }
 ?>
