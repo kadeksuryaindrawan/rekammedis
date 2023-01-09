@@ -1,23 +1,23 @@
 <?php
-    $page = 'dashboard';
-    include "../layout/header.php";
+$page = 'dashboard';
+include "../layout/header.php";
 ?>
-            
+
 <div class="page-heading">
     <h3>Dashboard</h3>
 </div>
 <div class="page-content">
     <section class="row">
         <div class="col-12 col-lg-12">
-        <?php
-            $dokter = mysqli_query($connection,"SELECT COUNT(*) AS total FROM tbdokter");   
+            <?php
+            $dokter = mysqli_query($connection, "SELECT COUNT(*) AS total FROM tbdokter");
             $datadokter = mysqli_fetch_assoc($dokter);
-            $hasildokter = $datadokter['total'];  
+            $hasildokter = $datadokter['total'];
 
-            $rekammedis = mysqli_query($connection,"SELECT COUNT(*) AS total FROM tbrekammedis");   
+            $rekammedis = mysqli_query($connection, "SELECT COUNT(*) AS total FROM tbrekammedis");
             $datarekammedis = mysqli_fetch_assoc($rekammedis);
-            $hasilrekammedis = $datarekammedis['total'];  
-        ?>
+            $hasilrekammedis = $datarekammedis['total'];
+            ?>
             <div class="row">
                 <div class="col-12 col-lg-4 col-md-6">
                     <div class="card">
@@ -70,11 +70,11 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
         <div class="col-12 col-lg-12">
-            
+
             <div class="card">
                 <div class="card-header">
                     <h4>Jenis Penyakit</h4>
@@ -87,36 +87,55 @@
     </section>
 </div>
 
-            
+
 <script>
     <?php
-            $jenis = mysqli_query($connection,"SELECT COUNT(*) AS total, SUM(IF(jenis_penyakit='Umum',1,0)) AS umum, SUM(IF(jenis_penyakit='Khusus',1,0)) AS khusus, SUM(IF(jenis_penyakit!='Umum' AND jenis_penyakit != 'Khusus',1,0)) AS lainnya FROM tbrekammedis");   
-            $data = mysqli_fetch_assoc($jenis);
-            $hasilumum = ($data['umum']);  
-            $hasilkhusus = ($data['khusus']); 
-            $hasillainnya = ($data['lainnya']);  
-        ?>
-    let optionsVisitorsProfile  = {  
-	series: [<?=$hasilumum?>, <?=$hasilkhusus?>, <?=$hasillainnya?>],
-	labels: ['Umum', 'Khusus', 'Lainnya'],
-	colors: ['#435ebe','#55c6e8','#e67e22'],
-	chart: {
-		type: 'donut',
-		width: '100%',
-		height:'350px'
-	},
-	legend: {
-		position: 'bottom'
-	},
-	plotOptions: {
-		pie: {
-			donut: {
-				size: '30%'
-			}
-		}
-	}
-}
+    $jenis = mysqli_query($connection, "SELECT COUNT(*) AS total, SUM(IF(jenis_penyakit='Umum',1,0)) AS umum, SUM(IF(jenis_penyakit='Khusus',1,0)) AS khusus, SUM(IF(jenis_penyakit!='Umum' AND jenis_penyakit != 'Khusus',1,0)) AS lainnya FROM tbrekammedis");
+    $data = mysqli_fetch_assoc($jenis);
+    $hasilumum = ($data['umum']);
+    $hasilkhusus = ($data['khusus']);
+    $hasillainnya = ($data['lainnya']);
+    ?>
+    let optionsVisitorsProfile = {
+        series: [<?= $hasilumum ?>, <?= $hasilkhusus ?>, <?= $hasillainnya ?>],
+        labels: ['Umum', 'Khusus', 'Lainnya'],
+        colors: ['#435ebe', '#55c6e8', '#e67e22'],
+        chart: {
+            type: 'donut',
+            width: '100%',
+            height: '350px'
+        },
+        legend: {
+            position: 'bottom'
+        },
+        plotOptions: {
+            pie: {
+                donut: {
+                    size: '30%'
+                }
+            }
+        }
+    }
 </script>
 <?php
-    include "../layout/footer.php";
+include "../layout/footer.php";
+if (isset($_SESSION['login_success'])) { ?>
+    <script>
+        Toastify({
+            text: "<?=$_SESSION['login_success']?>",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            }
+        }).showToast();
+    </script>
+<?php
+}
+unset($_SESSION['login_success']);
 ?>

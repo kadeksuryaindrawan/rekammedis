@@ -1,6 +1,6 @@
 <?php
-    $page = 'dokter';
-    include "../layout/header.php";
+    $page = 'profile';
+    include "../layout/header-dokter.php";
 ?>
 
 <div class="page-heading">
@@ -73,7 +73,7 @@
                             ?>
                             
                             <div class="row">
-                                <a href="./dokter.php" class="d-flex justify-content-center w-full">
+                                <a href="./profile.php" class="d-flex justify-content-center w-full">
                                     <button class="btn btn-secondary w-100 my-1">Kembali</button>
                                 </a>
                             </div>

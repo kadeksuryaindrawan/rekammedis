@@ -13,10 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Rekam Medis Pasien</title>
     
+    <!-- <link rel="stylesheet" href="../../assets/extensions/toastify-js/src/toastify.css"> -->
     <link rel="stylesheet" href="../../assets/css/main/app.css">
     <link rel="stylesheet" href="../../assets/css/main/app-dark.css">
     <link rel="shortcut icon" href="../../assets/images/logo/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon" href="../../assets/images/logo/favicon.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     
 <link rel="stylesheet" href="../../assets/css/shared/iconly.css">
 <link rel="stylesheet" href="../../assets/css/pages/fontawesome.css">

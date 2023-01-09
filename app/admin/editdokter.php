@@ -68,7 +68,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-center">
-                                            <button type="submit" class="btn btn-primary me-1 my-2 w-100">Simpan</button>
+                                            <button id="top-center" type="submit" class="btn btn-primary btn-block btn-lg me-1 my-2 w-100">Simpan</button>
                                         </div>
                                     </div>
                                 </div>
@@ -89,6 +89,7 @@
         </div>
     </section>
     <!-- // Basic Vertical form layout section end -->
+    
 </div>
 
 <?php

@@ -23,7 +23,6 @@
 
 							echo"
 									<script>
-										alert('Login Sukses');
 										location.href = '../app/admin/dashboard.php';
 									</script>
 								";
@@ -45,7 +44,7 @@
 							$pesan = "Gagal login!";
 						}
 
-							
+						$_SESSION['login_success'] = "Berhasil Login";
 					}
 					else{
 						$pesan = "Email / Password Salah!";
