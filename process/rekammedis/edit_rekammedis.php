@@ -1,4 +1,5 @@
 <?php
+session_start();
     require_once "../../config/connection.php";
 
     extract($_POST);
@@ -7,7 +8,7 @@
     $data = mysqli_fetch_assoc($query_rekam);
     $nik = $data['nik'];
 
-    $query = mysqli_query($connection, "UPDATE tbrekammedis SET sakit = '$sakit', pemeriksaan = '$pemeriksaan', pengobatan = '$pengobatan', lainnya = '$lainnya' WHERE id_rekammedis = $id_rekammedis");
+    $query = mysqli_query($connection, "UPDATE tbrekammedis SET sakit = '$sakit', pemeriksaan = '$pemeriksaan', alergi_obat = '$alergi_obat', pengobatan = '$pengobatan', lainnya = '$lainnya' WHERE id_rekammedis = $id_rekammedis");
     if($query){
         if($level == 'admin'){
             header("location:../../app/admin/lihatrekam.php?nik=$nik");
