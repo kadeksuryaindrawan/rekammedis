@@ -40,25 +40,31 @@
                                     <div class="row">
                                     <div class="col-12">
                                             <div class="form-group">
-                                                <label for="sakit" class="form-label">Sakit</label>
+                                                <label for="sakit" class="form-label">Diagnosa</label>
                                                 <textarea class="form-control" id="sakit" rows="3" name="sakit"><?= $data['sakit'] ?></textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="pemeriksaan" class="form-label">Pemeriksaan</label>
+                                                <label for="pemeriksaan" class="form-label">Tindakan</label>
                                                 <textarea class="form-control" id="pemeriksaan" rows="3" name="pemeriksaan"><?= $data['pemeriksaan'] ?></textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="pengobatan" class="form-label">Pengobatan</label>
+                                                <label for="pengobatan" class="form-label">Obat</label>
                                                 <textarea class="form-control" id="pengobatan" rows="3" name="pengobatan"><?= $data['pengobatan'] ?></textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="lainnya" class="form-label">Lainnya</label>
+                                                <label for="pemeriksaan" class="form-label">Alergi Obat</label>
+                                                <textarea class="form-control" id="alergi_obat" rows="3" name="alergi_obat"><?= $data['alergi_obat'] ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="lainnya" class="form-label">Keterangan Lainnya</label>
                                                 <textarea class="form-control" id="lainnya" rows="3" name="lainnya"><?= $data['lainnya'] ?></textarea>
                                             </div>
                                         </div>
