@@ -57,7 +57,6 @@ $data = mysqli_fetch_assoc($query);
                                         <th>TINDAKAN</th>
                                         <th>ALERGI OBAT</th>
                                         <th>OBAT</th>
-                                        <th>KETERANGAN TAMBAHAN</th>
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
@@ -79,7 +78,6 @@ $data = mysqli_fetch_assoc($query);
                                                 <td><?= $d['pemeriksaan'] ?></td>
                                                 <td><?= $d['alergi_obat'] ?></td>
                                                 <td><?= $d['pengobatan'] ?></td>
-                                                <td><?= $d['lainnya'] ?></td>
                                                 <td>
                                                     <a href="./editrekammedis.php?id_rekammedis=<?= $d['id_rekammedis'] ?>"><button class="btn btn-primary my-2">Edit</button></a>
                                                     <a href="../../process/rekammedis/hapus_rekammedis.php?id_rekammedis=<?= $d['id_rekammedis'] ?>"><button class="btn btn-danger my-2">Hapus</button></a>
