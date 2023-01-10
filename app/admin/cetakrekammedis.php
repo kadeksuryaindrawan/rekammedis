@@ -9,7 +9,7 @@ $nik = $_GET['nik'];
 $query1 = mysqli_query($connection,"SELECT * FROM tbktp WHERE nik = '$nik'");
 $data = mysqli_fetch_assoc($query1);
 $nama = $data['nama'];
-$query = mysqli_query($connection,"SELECT tbrekammedis.*,tbktp.*, timestampdiff(year, tbktp.tgl_lahir, curdate()) as umur FROM tbrekammedis INNER JOIN tbktp USING(nik) WHERE nik = '$nik' ORDER BY tbrekammedis.id_rekammedis DESC");
+$query = mysqli_query($connection,"SELECT tbdokter.nama_dokter, tbrekammedis.*, tbktp.*,TIMESTAMPDIFF(YEAR, tbktp.tgl_lahir, CURDATE()) AS umur FROM tbdokter JOIN tbrekammedis ON tbdokter.id_dokter = tbrekammedis.id_dokter JOIN tbktp USING(nik) WHERE nik = '$nik' ORDER BY tbrekammedis.id_rekammedis DESC;");
 
 			
 $tempDir = "../../public/pdfqrcodes/";
@@ -38,21 +38,25 @@ $pdf->SetFont('Arial','B',20);
 $pdf->Cell(0,-20,"$nama",0,0,'C');
 $pdf->Ln(0,0);
 
-$pdf->SetFont('Arial','B',10);
-$pdf->Cell(45,10,'TGL PERIKSA',1);
-$pdf->Cell(70,10,'PEMERIKSAAN',1);
-$pdf->Cell(70,10,'PENGOBATAN',1);
-$pdf->Cell(60,10,'LAINNYA',1);
-$pdf->Cell(35,10,'DIAGNOSA',1);
+$pdf->SetFont('Arial','B',8);
+$pdf->Cell(30,10,'TGL PERIKSA',1);
+$pdf->Cell(25,10,'DOKTER',1);
+$pdf->Cell(30,10,'DIAGNOSA',1);
+$pdf->Cell(60,10,'TINDAKAN',1);
+$pdf->Cell(30,10,'ALERGI',1);
+$pdf->Cell(60,10,'OBAT',1);
+$pdf->Cell(50,10,'KET. TAMBAHAN',1);
 $pdf->Ln();
 
 while($d = mysqli_fetch_assoc($query)){
-    $pdf->SetFont('Arial','',8);
-    $pdf->Cell(45,10,$d['tgl_periksa'],1);
-    $pdf->Cell(70,10,$d['pemeriksaan'],1);
-    $pdf->Cell(70,10,$d['pengobatan'],1);
-    $pdf->Cell(60,10,$d['lainnya'],1);
-    $pdf->Cell(35,10,$d['sakit'],1);
+    $pdf->SetFont('Arial','',6);
+    $pdf->Cell(30,10,$d['tgl_periksa'],1);
+    $pdf->Cell(25,10,$d['nama_dokter'],1);
+    $pdf->Cell(30,10,$d['sakit'],1);
+    $pdf->Cell(60,10,$d['pemeriksaan'],1);
+    $pdf->Cell(30,10,$d['alergi_obat'],1);
+    $pdf->Cell(60,10,$d['pengobatan'],1);
+    $pdf->Cell(50,10,$d['lainnya'],1);
     $pdf->Ln();
 }
 
