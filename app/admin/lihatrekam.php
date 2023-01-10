@@ -55,6 +55,7 @@ $data = mysqli_fetch_assoc($query);
                                         <th>UMUR</th>
                                         <th>DIAGNOSA</th>
                                         <th>TINDAKAN</th>
+                                        <th>ALERGI OBAT</th>
                                         <th>OBAT</th>
                                         <th>KETERANGAN TAMBAHAN</th>
                                         <th>ACTION</th>
@@ -76,7 +77,7 @@ $data = mysqli_fetch_assoc($query);
                                                 <td class="text-bold-500"><?= $d['umur'] ?></td>
                                                 <td><?= $d['sakit'] ?></td>
                                                 <td><?= $d['pemeriksaan'] ?></td>
-                                                
+                                                <td><?= $d['alergi_obat'] ?></td>
                                                 <td><?= $d['pengobatan'] ?></td>
                                                 <td><?= $d['lainnya'] ?></td>
                                                 <td>
