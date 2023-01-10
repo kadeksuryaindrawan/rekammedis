@@ -28,16 +28,17 @@ QRcode::png($codeContents, $pngAbsoluteFilePath,$quality,$ukuran,$padding);
 
 $qrcodeimage = "../../public/pdfqrcodes/rekam_medis_" . $nik . ".png";
 $pdf = new FPDF('L','mm', 'a4');
-$pdf->SetTopMargin(75);
+
 $pdf->AddPage();
 $pdf->Image("../../public/template/kopa4.jpg",27,0,0,350);
+$pdf->Ln(60,0);
 $pdf->SetFont('Arial','B',14);
 $pdf->Cell(0,-20,"Riwayat Rekam Medis",0,0,'C');
 $pdf->Ln(12,0);
 $pdf->SetFont('Arial','B',20);
 $pdf->Cell(0,-20,"$nama",0,0,'C');
 $pdf->Ln(0,0);
-
+$pdf->Image($qrcodeimage,260,2,35,35);
 $pdf->SetFont('Arial','B',8);
 $pdf->Cell(30,10,'TGL PERIKSA',1);
 $pdf->Cell(25,10,'DOKTER',1);
@@ -60,7 +61,6 @@ while($d = mysqli_fetch_assoc($query)){
     $pdf->Ln();
 }
 
-$pdf->Image($qrcodeimage,260,173,35,35);
 
 $pdf->Output();
 $pdf->Output("../../public/pdfqrcodes/rekam_medis_" . $nik . ".pdf", "F");
