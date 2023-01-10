@@ -61,7 +61,6 @@ while($d = mysqli_fetch_assoc($query)){
     $pdf->Ln();
 }
 
-
 $pdf->Output();
 $pdf->Output("../../public/pdfqrcodes/rekam_medis_" . $nik . ".pdf", "F");
 
