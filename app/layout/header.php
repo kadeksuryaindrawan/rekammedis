@@ -19,6 +19,8 @@
     <link rel="shortcut icon" href="../../assets/images/logo/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon" href="../../assets/images/logo/favicon.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="../../assets/extensions/sweetalert2/sweetalert2.min.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
     
 <link rel="stylesheet" href="../../assets/css/shared/iconly.css">
 <link rel="stylesheet" href="../../assets/css/pages/fontawesome.css">

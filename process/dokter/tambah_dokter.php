@@ -15,7 +15,7 @@
 
     $sql = "INSERT INTO `tbdokter`
     VALUES
-     (NULL, '".$id_user."','".$nama."','".$telp."','".$alamat."');";
+     (NULL, '".$id_user."','".$nama_dokter."','".$telp."','".$alamat."');";
 
     $query = mysqli_query($connection, $sql);
     if($query){
