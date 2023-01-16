@@ -62,9 +62,10 @@ include "../layout/header.php";
                                             <span class="bi bi-three-dots-vertical"></span>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a href="editdokter.php?id=<?php echo $d['id_user']; ?>" class="dropdown-item"><i class="bi bi-pencil-square"></i> Edit</a>
-                                            <a href="../../process/dokter/hapus_dokter.php?id=<?php echo $d['id_user']; ?>" class="dropdown-item"><i class="bi bi-trash"></i> Hapus</a>
-                                            <a href="ubahpassword.php?id=<?php echo $d['id_user']; ?>" class="dropdown-item"><i class="bi bi-credit-card-fill"></i> Ubah Password</a>
+                                            <a href="editdokter.php?id=<?php echo $d['id_user']; ?>" class="dropdown-item"><i class="bi bi-pencil-square" id="from1"></i> Edit</a>
+                                            <!--<a href="../../process/dokter/hapus_dokter.php?id=<?php echo $d['id_user']; ?>" class="dropdown-item" onclick="return confirm('Yakin menghapus?')"><i class="bi bi-trash"></i> Hapus</a>-->
+                                            <a class="dropdown-item" onclick="confirmationHapusData('../../process/dokter/hapus_dokter.php?id=<?php echo $d['id_user']; ?>')"><i class="bi bi-trash"></i> Hapus</a>
+                                            <a href="ubahpassword.php?id=<?php echo $d['id_user']; ?>" class="dropdown-item"><i class="bi bi-credit-card-fill" title="Delete"></i> Ubah Password</a>
                                         </div>
                                     </div>
                                 </td>
@@ -81,6 +82,38 @@ include "../layout/header.php";
     <!-- Basic Tables end -->
 </div>
 
+<script>
+    function confirmationHapusData(url) {
+        Swal.fire({
+            // title: 'Anda Yakin Untuk Menghapus Data Ini ?',
+            // text: 'Anda Tidak Dapat Melihat Data Ini Lagi!!!',
+            // type: 'warning',
+            // showCancelButton: true,
+            // confirmButtonColor: '#DD6B55',
+            // confirmButtonText: 'Hapus Saja!!',
+            // closeOnConfirm: false
+
+            title: 'Anda yakin menghapus data?',
+            text: "Anda tidak akan dapat mengembalikan data ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                window.location.href = url;
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+    }
+</script>
+
 <?php
-    include "../layout/footer.php";
+include "../layout/footer.php";
 ?>

@@ -23,6 +23,10 @@
 <!-- <script src="../../assets/extensions/toastify-js/src/toastify.js"></script>
 <script src="../../assets/js/pages/toastify.js"></script> -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<!-- Sweet alert -->
+<script src="assets/extensions/sweetalert2/sweetalert2.min.js"></script>>
+<script src="assets/js/pages/sweetalert2.js"></script>>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 
