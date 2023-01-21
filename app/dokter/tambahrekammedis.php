@@ -4,6 +4,7 @@ include "../layout/header-dokter.php";
 $nik = $_GET['nik'];
 $query = mysqli_query($connection, "SELECT * FROM tbktp WHERE nik = '$nik'");
 $data = mysqli_fetch_assoc($query);
+extract($_POST);
 ?>
 
 <div class="page-heading">
@@ -45,14 +46,32 @@ $data = mysqli_fetch_assoc($query);
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                        <div class="form-group">
+                                            <div class="form-group">
                                                 <label for="jenis" class="form-label">Jenis Penyakit</label>
-                                                <select class="form-control" id="jenis" name="jenis_penyakit">
+                                                <select class="form-control" id="jenis" name="jenis_penyakit" onclick="display();">
                                                     <option value="">Pilih Jenis Penyakit</option>
                                                     <option value="Umum">Umum</option>
                                                     <option value="Khusus">Khusus</option>
                                                     <option value="Lainnya">Lainnya</option>
+                                                    <script>
+                                                        function display() {
+                                                            var x = document.getElementById('jenis').value;
+                                                            
+                                                            switch(x){
+                                                                case 'Lainnya':
+                                                                    document.getElementById('lainnya').style.display = "block";
+                                                                    break;
+                                                                default:
+                                                                    break;
+                                                            }
+                                                        }
+                                                    </script>
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12" id="lainnya" style="display: none;">
+                                            <div class="form-group">
+                                                <input class="form-control" id="jenis" rows="3" name="jenis_penyakit"></input>
                                             </div>
                                         </div>
                                         <div class="col-12">
