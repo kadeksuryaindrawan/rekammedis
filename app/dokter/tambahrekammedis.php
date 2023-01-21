@@ -62,6 +62,7 @@ extract($_POST);
                                                                     document.getElementById('lainnya').style.display = "block";
                                                                     break;
                                                                 default:
+                                                                    document.getElementById('lainnya').style.display = "none";
                                                                     break;
                                                             }
                                                         }
