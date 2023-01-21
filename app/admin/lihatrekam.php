@@ -80,7 +80,7 @@ $data = mysqli_fetch_assoc($query);
                                                 <td><?= $d['pengobatan'] ?></td>
                                                 <td>
                                                     <a href="./editrekammedis.php?id_rekammedis=<?= $d['id_rekammedis'] ?>"><button class="btn btn-primary my-2">Edit</button></a>
-                                                    <a href="../../process/rekammedis/hapus_rekammedis.php?id_rekammedis=<?= $d['id_rekammedis'] ?>"><button class="btn btn-danger my-2">Hapus</button></a>
+                                                    <a href="../../process/rekammedis/hapus_rekammedis.php?id_rekammedis=<?= $d['id_rekammedis'] ?>" onclick="return  confirm('Yakin hapus data ?')"><button class="btn btn-danger my-2">Hapus</button></a>
                                                 </td>
                                             </tr>
                                         <?php
