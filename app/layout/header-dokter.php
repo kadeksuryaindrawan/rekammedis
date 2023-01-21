@@ -74,7 +74,7 @@ if (!isset($_SESSION['user_login']['id_dokter'])) {
                         </li>
 
                         <li <?php if ($page == "profile") echo "class='sidebar-item active'"; ?>>
-                            <a href="./lihatdata.php" class='sidebar-link'>
+                            <a href="./lihatdatadokter.php" class='sidebar-link'>
                                 <i class="bi bi-person-fill"></i>
                                 <span>Profile</span>
                             </a>
